@@ -20,15 +20,26 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+        use:[
+          "awesome-typescript-loader",
+          "angular2-template-loader"
+        ]
       },
       {
         test: /\.html$/,
-        loader: 'html-loader'
+        use:[{
+        loader: "html-loader"
+        }]
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-        loader: 'file-loader?name=assets/[name].[hash].[ext]'
+        use:[{
+          loader: "file-loader",
+          options: {
+            name:"assets/[name].[ext]"
+          }
+        }]
+
       },
       {
         test: /\.scss$/,
@@ -36,13 +47,19 @@ module.exports = {
         //loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
         use: ExtractTextPlugin.extract({
          fallback: "style-loader",
-         use: "css-loader!sass-loader",
+         use: [
+            "css-loader",
+            "sass-loader"
+        ]
        })
       },
       {
         test: /\.css$/,
         include: helpers.root('src', 'app'),
-        loader: 'raw-loader'
+        use: [
+          "to-string-loader",
+          "css-loader"
+      ]
       }
     ]
   },

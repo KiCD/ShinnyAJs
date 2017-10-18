@@ -1,6 +1,6 @@
 .maindiv{
     height: 100%;
-    background: url('src/app/images/hills.jpg');
+    background: url('../assets/hills.jpg');
 }
 .img{
     height: auto;
