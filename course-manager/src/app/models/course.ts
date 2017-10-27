@@ -1,5 +1,5 @@
 export class Course {
-    constructor(public id: string,
+    constructor(        
         public name: string,
         public description: string,
         public imageUrl: string,

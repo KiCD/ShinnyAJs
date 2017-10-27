@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Course } from '../../models/course'
+import { CoursesProviderService } from '../services/courses-provider.service';
 
 @Component({
   selector: 'app-add-course',
@@ -14,7 +15,7 @@ export class AddCourseComponent implements OnInit {
   discount:number;
   imageUrl:string;
 
-  constructor() {
+  constructor(private coursesService:CoursesProviderService) {
     this.courseSaved= new EventEmitter<Course>();
    }
 
@@ -24,17 +25,19 @@ export class AddCourseComponent implements OnInit {
   onSubmit()
   {
       console.log("submit clicked");
-      if(!this.name || !this.description || this.price<=10 || this.discount<=0 || !this.imageUrl)
+     /* if(!this.name || !this.description || this.price<=10 || this.discount<=0 || !this.imageUrl)
       {
         alert("invalid values");
         return;
-      }
+      }*/
  
-      let newCourse = new Course( 
-        "course"+Math.random(),
-        this.name,this.description,this.imageUrl,this.price,this.discount);
-        this.courseSaved.emit(newCourse);
-        console.log("emitted");
+      // let newCourse = new Course( 
+      //   this.name,this.description,this.imageUrl,this.price,this.discount);
+      let newCourse = new Course(this.name, '', '', 10, 10);
+      this.coursesService.addNewCourse(newCourse)
+      .subscribe(res=>console.log("response to add: ",res),error=>alert(error));
+      this.courseSaved.emit(newCourse);
+      console.log("emitted");
       }
 
 }

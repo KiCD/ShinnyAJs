@@ -2,6 +2,7 @@
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { CoursesProviderService } from './courses-provider.service';
+import { Course } from '../../models/course';
 
 describe('CoursesProviderService', () => {
   beforeEach(() => {
@@ -10,7 +11,7 @@ describe('CoursesProviderService', () => {
     });
   });
 
-  it('should ...', inject([CoursesProviderService], (service: CoursesProviderService) => {
-    expect(service).toBeTruthy();
+  it('headers are correct', inject([CoursesProviderService], (service: CoursesProviderService) => {
+    //service.addNewCourse(new Course('test course','test description','',100,12)).subscribe(res=>console.log(res));
   }));
 });

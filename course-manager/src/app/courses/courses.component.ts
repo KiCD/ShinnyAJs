@@ -12,13 +12,21 @@ export class CoursesComponent implements OnInit {
   showCourseList = false;
   courses:Course[];
   constructor(private coursesProvider:CoursesProviderService) { 
-    coursesProvider.getCourses().then(result=>this.courses=result);
+    
+  }
+
+  
+  refreshCourses()
+  {
+    this.coursesProvider.getCourses().subscribe(result=>this.courses=result,error=>alert(error));
   }
 
   ngOnInit() {
+    this.refreshCourses();
     this.title = 'These are the available courses';
     this.showCourseList = true;
   }
+
 
   onShowCoursesRequested()
   {
@@ -35,6 +43,5 @@ export class CoursesComponent implements OnInit {
   onCourseSaved(course:Course)
   {
     this.showCourseList = true;
-    this.courses.push(course);
   }
 }
