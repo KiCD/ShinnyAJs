@@ -23,8 +23,14 @@ export class AddCourseComponent implements OnInit {
 
   onSubmit()
   {
+    console.log("submit clicked");
     //put validation here
-      console.log("submit clicked");
+      if(!this.name || !this.description || this.price<=10 || this.discount<=0 || !this.imageUrl)
+      {
+        alert("invalid values");
+        return;
+      }
+ 
       let newCourse = new Course( 
         "course"+Math.random(),
         this.name,this.description,this.imageUrl,this.price,this.discount);
