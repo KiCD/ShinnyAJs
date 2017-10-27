@@ -1,0 +1,11 @@
+.expensive{
+    background-color: grey
+}
+
+.row{
+    padding: 10px,
+}
+
+.bordered{
+    border:2px solid;
+}

@@ -1,0 +1,3 @@
+<app-navigation-bar (showCoursesRequested)="onShowCoursesRequested($event)" (addCourseRequested)="onAddCourseRequested($event)"></app-navigation-bar>
+<app-courses-list *ngIf="showCourseList" [courses]="courses"></app-courses-list>
+<app-add-course *ngIf="!showCourseList" (courseSaved)="onCourseSaved($event)"></app-add-course>

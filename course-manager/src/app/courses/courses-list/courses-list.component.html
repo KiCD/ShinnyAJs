@@ -1,0 +1,17 @@
+<h2><i>{{title}}</i></h2>
+<div class="container" *ngIf="showList">
+  <div class="row">
+    <div class="col-xs-4">Filter by:</div>
+    <div class="col-xs-4">
+      <input id="filterBox" [(ngModel)]="filterValue" name="filterValueName">
+    </div>
+  </div>
+  <div *ngFor="let course of courses | filterCourses:filterValue">
+    <app-course-item [course]="course" (goToDetailsRequested)="onGoToDetailsRequested($event)">
+    </app-course-item>  
+  </div>
+</div>
+<div *ngIf="!showList">
+   <app-course-details [course]="selectedCourse" (goBackRequested)="onGoBackRequested()"></app-course-details>
+</div>
+
