@@ -23,8 +23,7 @@ export class AddCourseComponent implements OnInit {
 
   onSubmit()
   {
-    console.log("submit clicked");
-    //put validation here
+      console.log("submit clicked");
       if(!this.name || !this.description || this.price<=10 || this.discount<=0 || !this.imageUrl)
       {
         alert("invalid values");
@@ -36,6 +35,6 @@ export class AddCourseComponent implements OnInit {
         this.name,this.description,this.imageUrl,this.price,this.discount);
         this.courseSaved.emit(newCourse);
         console.log("emitted");
-  }
+      }
 
 }
