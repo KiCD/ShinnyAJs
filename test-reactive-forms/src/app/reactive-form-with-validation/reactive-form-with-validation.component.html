@@ -1,15 +1,12 @@
-<form (ngSubmit)="save()" [formGroup]='testForm' novalidate>
-  <div class="form-group"
-  [ngClass]= "{'has-error':(testForm.get('name').touched || testForm.get('name').dirty) && testForm.get('name').errors}">
-    <label for="nameInput">Name: </label>
-    <input id="nameInput" 
-      class="form-control"
-      formControlName="name"/>  
-    <span class="help-block"
-    *ngIf="(testForm.get('name').touched || testForm.get('name').dirty) && testForm.get('name').errors">
-        You must provide a name
-      </span>
-  </div>
+<form [formGroup]='testForm' novalidate>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <app-edit-on-click 
+        [initialValue]="name"
+        [inputFormGroup]="nameGroup"
+        [inputFormControl]="nameFormControl"></app-edit-on-click>
+    </div>
+    <div class="panel-body">
   <div formGroupName="contactMethod"
   class="form-group"
   [ngClass]= "{'has-error':(testForm.get('contactMethod').touched || testForm.get('contactMethod').dirty)
@@ -31,4 +28,10 @@
         </span>
     </div>
   </div>
+</div>
+</div>
+<button (click)="save()" [disabled]="!testForm.dirty || !testForm.valid">Save changes</button>
+<br>{{testForm.value | json}}
+<br>Dirty: {{testForm.dirty}}
+<br>Valid: {{testForm.valid}}
 </form>

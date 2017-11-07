@@ -4,11 +4,13 @@ import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ReactiveFormWithValidationComponent } from './reactive-form-with-validation/reactive-form-with-validation.component';
+import { EditOnClickComponent } from './edit-on-click/edit-on-click.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReactiveFormWithValidationComponent
+    ReactiveFormWithValidationComponent,
+    EditOnClickComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl} from '@angular/forms';
 
 function emailOrPhoneAreProvided(c: AbstractControl)
 {
@@ -19,19 +19,30 @@ export class ReactiveFormWithValidationComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) { }
   testForm: FormGroup;
+  nameGroup: FormGroup;
+  nameFormControl: FormControl;
   someVal=true;
+  name: string='Joe Smith';
   ngOnInit() {
     this.initForm();
   }
   
   initForm()
   {
+    this.nameFormControl = new FormControl(this.name,Validators.required);
+    this.nameGroup = this.formBuilder.group({name:this.nameFormControl});
     this.testForm = this.formBuilder.group({
-      name:['', Validators.required],
+      nameGroup: this.nameGroup,
       contactMethod:this.formBuilder.group({
         email: '',
-        phone: ''
+        phone: '12345'
       },{validator:emailOrPhoneAreProvided})
     })
+  }
+
+  save()
+  {
+    console.log("save executed");
+    console.log("form value: ",this.testForm.value);
   }
 }
