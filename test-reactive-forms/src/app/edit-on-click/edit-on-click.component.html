@@ -1,0 +1,6 @@
+<div [formGroup]="inputFormGroup">
+  <label *ngIf="!editModeOn()">{{textToEdit}}</label>
+  <input *ngIf="editModeOn()" [formControl]="inputFormControl">
+  <button (click)="!editModeOn() ? enableEditMode():saveValue()">{{editModeOn() ? "Save" : "Edit"}}</button>
+  <button *ngIf="editModeOn()" (click)="cancelSave()">Cancel</button>
+</div>
