@@ -1,3 +1,5 @@
 node_modules/
 dist/
 npm-debug.log
+ng-unit-testing/src/target/surefire-reports/TESTS-HeadlessChrome_67.0.3396_(Windows_10.0.0).xml
+ng-unit-testing/test-results/HeadlessChrome 67.0.3396 (Windows 10.0.0)/index.html
